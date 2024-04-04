@@ -107,5 +107,23 @@ document.getElementById("quantity").addEventListener("change", function() {
 });
 </script>
 
+<script>
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    var formData = new FormData(this);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://script.google.com/macros/s/AKfycbydR2tPaWWs75Qmg2EsrmiPMnBt1zJf5snett7xp9C5ydtS1kWzM9_oYS2MBFhnNhiH/exec", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("Form submission successful!");
+            // Optionally, redirect the user to a thank you page or show a success message
+        }
+    };
+    xhr.send(new URLSearchParams(formData).toString());
+});
+</script>
+
 </body>
 </html>
